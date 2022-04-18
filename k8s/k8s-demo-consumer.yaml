@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-consumer
+  labels:
+    svc: demo
+    app: consumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      svc: demo
+      app: consumer
+  template:
+    metadata:
+      labels:
+        svc: demo
+        app: consumer
+    spec:
+      containers:
+        - name: demo-consumer
+          # image: consumer:0.1
+          image: 192.168.100.100:8030/library/consumer:0.1
+          # imagePullPolicy: Always
+          ports:
+            - containerPort: 8020
+          # resources:
+          #   requests:
+          #     memory: 1Gi
+          #     cpu: 250m
+          #   limits:
+          #     memory: 1Gi
+          #     cpu: 250m

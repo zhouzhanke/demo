@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-gateway
+  labels:
+    svc: demo
+    app: gateway
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      svc: demo
+      app: gateway
+  template:
+    metadata:
+      labels:
+        svc: demo
+        app: gateway
+    spec:
+      containers:
+        - name: demo-gateway
+          image: 192.168.100.100:8030/library/gateway:0.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          # resources:
+          #   requests:
+          #     memory: 1Gi
+          #     cpu: 250m
+          #   limits:
+          #     memory: 1Gi
+          #     cpu: 250m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-gateway
+spec:
+  ports:
+    - port: 8000
+  selector:
+    svc: demo
+    app: gateway
