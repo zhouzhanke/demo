@@ -15,12 +15,30 @@
     <properties>
         <java.version>8</java.version>
     </properties>
+    <repositories>
+        <repository>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <!-- <url>http://maven.aliyun.com/nexus/content/groups/public/</url> -->
+            <url>https://maven.aliyun.com/repository/public</url>
+        </repository>
+    </repositories>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-context</artifactId>
+            <version>2.2.3.RELEASE</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-starter-alibaba-nacos-discovery -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <version>2.2.7.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
             <version>2.2.7.RELEASE</version>
         </dependency>
 
