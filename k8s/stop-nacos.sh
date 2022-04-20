@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
 echo "mysql mysql stop"
-microk8s kubectl delete -f ./k8s/mysql-local.yaml
+kubectl delete -f k8s/mysql-local.yaml
 
 
 echo "nacos stop"
-microk8s kubectl delete -f ./k8s/nacos-quick-start.yaml
+kubectl delete -f k8s/nacos-quick-start.yaml
+
+echo "ingress stop"
+kubectl delete -f k8s/ingress.yaml
+kubectl delete -f k8s/metrix.yaml

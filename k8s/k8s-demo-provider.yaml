@@ -18,11 +18,12 @@ spec:
         app: provider
     spec:
       imagePullSecrets:
-        - name: regcred
+        - name: regcred2
       containers:
         - name: demo-provider
-          image: 192.168.100.100:8030/library/provider:0.2
-          imagePullPolicy: Always
+          # image: 192.168.100.100:8030/library/provider:0.2
+          image: registry.cn-hongkong.aliyuncs.com/zhou-demo/demo-provider:0.1
+          # imagePullPolicy: Always
           ports:
             - containerPort: 8010
           # resources:
@@ -32,14 +33,14 @@ spec:
           #   limits:
           #     memory: 1Gi
           #     cpu: 250m
-# ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: demo-provider
-# spec:
-#   ports:
-#     - port: 8010
-#   selector:
-#     svc: demo
-#     app: provider
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-provider
+spec:
+  ports:
+    - port: 8010
+  selector:
+    svc: demo
+    app: provider

@@ -17,10 +17,12 @@ spec:
         svc: demo
         app: consumer
     spec:
+      imagePullSecrets:
+        - name: regcred2
       containers:
         - name: demo-consumer
           # image: consumer:0.1
-          image: 192.168.100.100:8030/library/consumer:0.1
+          image: registry.cn-hongkong.aliyuncs.com/zhou-demo/demo-provider:0.1
           # imagePullPolicy: Always
           ports:
             - containerPort: 8020

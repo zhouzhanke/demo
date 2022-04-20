@@ -17,10 +17,12 @@ spec:
         svc: demo
         app: gateway
     spec:
+      imagePullSecrets:
+        - name: regcred2
       containers:
         - name: demo-gateway
-          image: 192.168.100.100:8030/library/gateway:0.1
-          imagePullPolicy: Always
+          image: registry.cn-hongkong.aliyuncs.com/zhou-demo/demo-gateway:0.1
+          # imagePullPolicy: Always
           ports:
             - containerPort: 8000
           # resources:
